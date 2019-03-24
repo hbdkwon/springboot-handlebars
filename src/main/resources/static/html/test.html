@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello RayKwon!</title>
+    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+</head>
+<body>
+<h1>Use name property!!</h1>
+<h2>Hello RayKwon!</h2>
+<h2>2019. 3. 24</h2>
+
+<h1>Use server side greeting template!!</h1>
+<h2>Glad to meet to RayKwon!
+    Look so great~~ RayKwon!</h2>
+
+<h1>Use client side greeting template!!</h1>
+<h2 id="clientside"></h2>
+<script id="greeting-hbs" type="text/x-handlebars">
+    {{sayGlad name}}
+    {{sayLook name}}
+</script>
+
+<script src="/js/lib/jquery-3.3.1.min.js"></script>
+<script src="/js/lib/bootstrap.min.js"></script>
+<script src="/js/lib/handlebars-v4.1.1.js"></script>
+<script>
+    Handlebars.registerHelper("sayHello", function (name) { return "Hello " + name + "!"; });
+    Handlebars.registerHelper("sayGlad", function (name) { return "Glad to meet to " + name + "!"; });
+    Handlebars.registerHelper("sayLook", function (name) { return "Look so great~~ " + name + "!"; });
+
+    var source = $("#greeting-hbs").html();
+    var template = Handlebars.compile(source);
+    var data = {"name":"RayKwon"}
+    var html = template(data);
+
+    $("#clientside").append(html);
+</script>
+</body>
+</html>

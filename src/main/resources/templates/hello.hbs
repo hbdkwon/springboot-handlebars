@@ -2,16 +2,34 @@
 <html>
 <head>
     <title>{{sayHello name}}</title>
+    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
 </head>
 <body>
-<h1>Use name property!!</h1>
-<h2>Hello {{name}}!</h2>
-<h2>{{now "full"}}</h2>
+    <h1>Use name property!!</h1>
+    <h2>Hello {{name}}!</h2>
+    <h2>{{now "full"}}</h2>
 
-<h1>Use server side greeting template!!</h1>
-<h2>{{> greeting}}</h2>
+    <h1>Use server side greeting template!!</h1>
+    <h2>{{> greeting}}</h2>
 
-<h1>Use client side greeting template!! Check below hidden javascript!</h1>
-{{embedded "greeting"}}
+    <h1>Use client side greeting template!!</h1>
+    <h2 id="clientside"></h2>
+    {{embedded "greeting"}}
+
+    <script src="/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="/js/lib/bootstrap.min.js"></script>
+    <script src="/js/lib/handlebars-v4.1.1.js"></script>
+    <script>
+        Handlebars.registerHelper("sayHello", function (name) { return "Hello " + name + "!"; });
+        Handlebars.registerHelper("sayGlad", function (name) { return "Glad to meet to " + name + "!"; });
+        Handlebars.registerHelper("sayLook", function (name) { return "Look so great~~ " + name + "!"; });
+
+        var source = $("#greeting-hbs").html();
+        var template = Handlebars.compile(source);
+        var data = {"name":"RayKwon"}
+        var html = template(data);
+
+        $("#clientside").append(html);
+    </script>
 </body>
 </html>

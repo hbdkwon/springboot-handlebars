@@ -14,6 +14,6 @@ public class HandelbarHelper {
     }
 
     public String sayLook(String name) {
-        return String.format("Look so beautiful~~ %s!", name);
+        return String.format("Look so great~~ %s!", name);
     }
 }
