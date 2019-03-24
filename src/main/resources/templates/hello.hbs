@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{sayHello name}}</title>
+</head>
+<body>
+<h1>Use name property!!</h1>
+<h2>Hello {{name}}!</h2>
+<h2>{{now "full"}}</h2>
+
+<h1>Use server side greeting template!!</h1>
+<h2>{{> greeting}}</h2>
+
+<h1>Use client side greeting template!! Check below javascript!</h1>
+{{embedded "greeting"}}
+</body>
+</html>
