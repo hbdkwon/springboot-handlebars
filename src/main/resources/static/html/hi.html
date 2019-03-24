@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello YounghoonKwon!</title>
+    <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+</head>
+<body>
+<h1>Use name property!!</h1>
+<h2>Hello YounghoonKwon!</h2>
+<h2>2019. 3. 24</h2>
+
+<h1>Use server side greeting template!!</h1>
+<h2>        Glad to meet to YounghoonKwon!
+    Look so great~~ YounghoonKwon!</h2>
+
+<script src="/js/lib/jquery-3.3.1.min.js"></script>
+<script src="/js/lib/bootstrap.min.js"></script>
+<script src="/js/lib/handlebars-v4.1.1.js"></script>
+
+<h1>Use client side greeting template!! Using "precompile"</h1>
+<h2 id="clientside"></h2>
+
+<script type="text/javascript">
+    (function() {
+        var template = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+                return "        "
+                    + container.escapeExpression((helpers.sayGlad || (depth0 && depth0.sayGlad) || helpers.helperMissing).call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.name : depth0),{"name":"sayGlad","hash":{},"data":data}))
+                    + "\r\n        "
+                    + container.escapeExpression((helpers.sayLook || (depth0 && depth0.sayLook) || helpers.helperMissing).call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.name : depth0),{"name":"sayLook","hash":{},"data":data}));
+            },"useData":true});
+        var templates = Handlebars.templates = Handlebars.templates || {};
+        templates['greeting'] = template;
+        var partials = Handlebars.partials = Handlebars.partials || {};
+        partials['greeting'] = template;
+    })();
+
+    Handlebars.registerHelper("sayHello", function (name) { return "Hello " + name + "!"; });
+    Handlebars.registerHelper("sayGlad", function (name) { return "Glad to meet to " + name + "!"; });
+    Handlebars.registerHelper("sayLook", function (name) { return "Look so great~~ " + name + "!"; });
+    var template = Handlebars.templates["greeting"];
+    var data = {"name":"YounghoonKwon"}
+    var html = template(data);
+    $("#clientside").append(html);
+</script>
+</body>
+</html>

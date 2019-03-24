@@ -14,4 +14,10 @@ public class HandlebarsController {
         model.addAttribute("name", "RayKwon");
         return "hello";
     }
+
+    @GetMapping("hi")
+    public String hi(Model model) {
+        model.addAttribute("name", "YounghoonKwon");
+        return "hi";
+    }
 }
